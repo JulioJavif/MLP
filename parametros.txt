@@ -1,0 +1,4 @@
+Informativo, Duración informativa, Relacionado con el producto, Duración relacionada con el producto, Valores de página, Día especial, Mes, Tipo de visitante, Fin de semana, Ingresos
+
+
+Informational,Informational Duration,Product Related,Product Related Duration,Page Values,Special Day,Month,Visitor Type, Weekend, Revenue
