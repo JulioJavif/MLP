@@ -5,6 +5,7 @@ class load_OSI:
     feature_names = []
     data = []
     target = []
+    count = 0
 
     meses = {
         "Jan":1,
@@ -38,9 +39,9 @@ class load_OSI:
 
     with open('online_shoppers_intention.csv', newline='') as File:
         reader = csv.reader(File)
-        i = 0
+        i = -1
         for row in reader:
-            if i == 0:
+            if i == -1:
                 feature_names.append(row[2])
                 feature_names.append(row[3])
                 feature_names.append(row[4])
@@ -67,3 +68,4 @@ class load_OSI:
             data.append(aux)
             target.append(booleano[row[17]])
             i = i + 1
+        count = i
