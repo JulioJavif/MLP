@@ -30,8 +30,11 @@ class MLP_classifier:
 
     params = [
         {
-            'hidden_layer_sizes' : [(9,9),(9,4),(9,1),(9,9,1)],
+            'hidden_layer_sizes' : [(9,9),(18,9),(9,1),(9,9,1)],
             'activation' : ['relu', 'logistic', 'identity', 'tanh'],
+            'alpha' : [1e-6, 1e-5, 0.0001, 0.001],
+            'solver' : ['lbfgs', 'adam'],
+            'learning_rate_init' : [0.0001, 0.001, 0.01]
         }
     ]
 
