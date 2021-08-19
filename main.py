@@ -9,6 +9,8 @@ def main():
     #print(osi.feature_names)
     #print(osi.data)
     #print(osi.target)
+    #print(osi.count)
+    #print(osi.compras)
 
 
 if __name__ == '__main__':

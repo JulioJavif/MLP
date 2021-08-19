@@ -6,6 +6,7 @@ class load_OSI:
     data = []
     target = []
     count = 0
+    compras = [ 0, 0]
 
     meses = {
         "Jan":1,
@@ -54,6 +55,16 @@ class load_OSI:
                 #feature_names.append(row[17])
                 i = i + 1
                 continue
+            if booleano[row[17]] == 0:
+              if compras[0] == 1908:
+                continue
+              else:
+                compras[0] = compras[0] + 1
+            else:
+              if compras[1] == 1908:
+                continue
+              else:
+                compras[1] = compras[1] + 1
             aux = []
             aux.append(row[2])
             aux.append(row[3])
@@ -67,5 +78,11 @@ class load_OSI:
             #aux.append(row[17])
             data.append(aux)
             target.append(booleano[row[17]])
+            """
+            if booleano[row[17]] == 0:
+              compras[0] = compras[0] + 1
+            else:
+              compras[1] = compras[1] + 1
+            """
             i = i + 1
         count = i

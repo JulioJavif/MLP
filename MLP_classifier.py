@@ -28,25 +28,19 @@ class MLP_classifier:
     X_trainscaled = sc_X.fit_transform(X_train)
     X_testscaled = sc_X.transform(X_test)
 
-    params = [
+    """params = [
         {
-            'hidden_layer_sizes' : [(18,9),],
-            #(9,9),(9,1),(9,9,1)
-            'activation' : ['tanh',],
-            #'relu',  'identity', 'logistic'
-            'alpha' : [1e-5,],
-            #1e-6, 0.0001, 0.001
-            'solver' : ['adam', ],
-            #'lbfgs',
-            'learning_rate_init' : [ 0.001, ]
-            # 1e-5, 0.0001,  0.01
+            'hidden_layer_sizes' : [(9,9), (9,4), (9,1), (9,9,1)],
+            'activation' : ['tanh', 'relu',  'identity', 'logistic'],
+            'alpha' : [1e-5, 1e-6, 0.0001, 0.001],
+            'solver' : [ 'lbfgs', 'adam', ],
+            'learning_rate_init' : [ 0.001,  1e-5, 0.0001,  0.01]
         }
-    ]
-
+    ]"""
     
 
     #hidden_layer_sizes=(9, 9, 1), activation="relu", random_state=1
-    clf = MLPClassifier(random_state=1, hidden_layer_sizes=(18, 9), activation='tanh', alpha=1e-5, solver='adam', learning_rate_init=0.001).fit(X_trainscaled, y_train)#256,128,64,32
+    clf = MLPClassifier(random_state=1, hidden_layer_sizes=(9, 9), activation='tanh', alpha=1e-5, solver='adam', learning_rate_init=0.001).fit(X_trainscaled, y_train)#256,128,64,32
     
     #grid = GridSearchCV(clf, param_grid=params, cv=5, scoring='accuracy')
     #grid.fit(X_train, y_train)
@@ -54,6 +48,6 @@ class MLP_classifier:
     y_pred = clf.predict(X_testscaled)
     print("\nResult: ", clf.score(X_testscaled, y_test))
 
-    fig = plot_confusion_matrix(clf, X_testscaled, y_test, display_labels=["No ingresos", "Ingresos"])#"Setosa", "Versicolor", "Virginica"
-    fig.figure_.suptitle("Confusion Matrix for Iris Dataset")
+    fig = plot_confusion_matrix(clf, X_testscaled, y_test, display_labels=["No compra", "Compra"])#"Setosa", "Versicolor", "Virginica"
+    fig.figure_.suptitle("Confusion Matrix for Shop Dataset")
     plt.show()
